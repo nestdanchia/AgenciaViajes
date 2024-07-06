@@ -1,7 +1,7 @@
 Le envie video ppor gmail 
 
 Ejecutar 
-nom run dev 
+npm run dev 
 
 Base  de DATOS 
 host : 'localhost',
