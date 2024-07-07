@@ -1,3 +1,6 @@
+CREATE DATABASE agencia_viajes;
+use agencia_viajes;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -12,8 +15,7 @@
 --
 -- Table structure for table `habitacion`
 --
-CREATE DATABASE agencia_viajes;
-use agencia_viajes;
+
 DROP TABLE IF EXISTS `habitacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -27,7 +29,7 @@ CREATE TABLE `habitacion` (
   `nuemero habitacion` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_habitacion_hotel_idx` (`id_hotel`),
-  CONSTRAINT `fk_habita_hotel` FOREIGN KEY (`id_hotel`) REFERENCES `hoteles` (`id`)
+  CONSTRAINT `fk_habita_hotel` FOREIGN KEY (`id_hotel`) REFERENCES `hoteles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -59,7 +61,7 @@ CREATE TABLE `hoteles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre_hotel_UNIQUE` (`nombre_hotel`),
   KEY `fk_hotel_provincia_idx` (`id_provincia`),
-  CONSTRAINT `fk_hotel_provincia` FOREIGN KEY (`id_provincia`) REFERENCES `provincias` (`id`)
+  CONSTRAINT `fk_hotel_provincia` FOREIGN KEY (`id_provincia`) REFERENCES `provincias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -89,7 +91,7 @@ CREATE TABLE `pago` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_reserva_UNIQUE` (`id_reserva`),
   KEY `fk_pago_reserva_idx` (`id_reserva`),
-  CONSTRAINT `fk_pago_reserva` FOREIGN KEY (`id_reserva`) REFERENCES `reservas` (`id_reserva`)
+  CONSTRAINT `fk_pago_reserva` FOREIGN KEY (`id_reserva`) REFERENCES `reservas` (`id_reserva`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -171,9 +173,9 @@ CREATE TABLE `reservas` (
   KEY `fk_turista_idx` (`id_turista`),
   KEY `fk_hotel_idx` (`id_hotel`),
   KEY `fk_reservas_habitacion_idx` (`id_habitacion`),
-  CONSTRAINT `fk_hotel` FOREIGN KEY (`id_hotel`) REFERENCES `hoteles` (`id`),
-  CONSTRAINT `fk_reservation_habitacion` FOREIGN KEY (`id_habitacion`) REFERENCES `habitacion` (`id`),
-  CONSTRAINT `fk_turista` FOREIGN KEY (`id_turista`) REFERENCES `turista` (`id`)
+  CONSTRAINT `fk_hotel` FOREIGN KEY (`id_hotel`) REFERENCES `hoteles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_reservation_habitacion` FOREIGN KEY (`id_habitacion`) REFERENCES `habitacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_turista` FOREIGN KEY (`id_turista`) REFERENCES `turista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -210,7 +212,7 @@ CREATE TABLE `turista` (
 
 LOCK TABLES `turista` WRITE;
 /*!40000 ALTER TABLE `turista` DISABLE KEYS */;
-INSERT INTO `turista` VALUES (1,'Juan','Perez','Dorrego 202 CABA ','4943-1520'),(2,'Pedro ','Rodriguez','Avda Libertador 4500 CABA ','4774-8956'),(3,'Francisco ','Fonseca','Avda Cabildo 2200 CABA ','4774-8957'),(4,'Julian','Giimenez','Arce 650 CABA ','4774-9065'),(9,'Josehp','Four','Ugly 23',NULL),(10,'Angelica','Sol','El Salvador 125',NULL),(11,'Monica ','Gutierrez','Nazca 124',NULL),(12,'Fernando ','Alegria','Las Risas 456',NULL),(13,'Pablo ','Unico','Dos 639',NULL),(14,'MIguel Angel ','Lorenz','Maure 36',NULL),(15,'roberto ','Perri','Los Olmos 56',NULL);
+INSERT INTO `turista` VALUES (1,'Juan','Perez','Dorrego 202 CABA ','4943-1520'),(2,'Pedro ','Rodriguez','Avda Libertador 4500 CABA ','4774-8956'),(3,'Francisco ','Fonseca','Avda Cabildo 2200 CABA ','4774-8957'),(4,'Julian','Giimenez','Arce 650 CABA ','4774-9065'),(9,'Josehp','Four','Ugly 23',NULL),(10,'Angelica','Sol','El Salvador 125',NULL),(11,'Monica ','Gutierrez','Nazca 124',NULL),(12,'Fernando ','Alegria','Las Risas 456',NULL),(13,'Pablo ','Unico','Dos 639',NULL),(14,'MIguel Angel ','Lorenz','Maure 36',NULL);
 /*!40000 ALTER TABLE `turista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-06 17:58:11
+-- Dump completed on 2024-07-07 12:08:54
