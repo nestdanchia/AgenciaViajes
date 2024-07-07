@@ -44,18 +44,18 @@
                 </tr>
             </thead>
             <tbody>
-            <% for(var i = 0; i< data.length; i++) { %>
+            <% data.forEach(function(data) { %>
                 <tr>
-                    <th scope="row"><%= (i+1) %></th>
-                    <td><%= data[i].nombre%></td>
-                    <td><%= data[i].apellidos%></td>
-					<td><%= data[i].direccion%></td>
+                    <th scope="row"><%= data.id %></th>
+                    <td><%= data.nombre%></td>
+                    <td><%= data.apellidos%></td>
+					<td><%= data.direccion%></td>
                     <td>
-                        <a class="btn btn-success edit" href="/turistas/edit/<%=data[i].id%>">Edit</a>
-                        <a class="btn btn-danger delete" onclick="return alert('Estas Seguro de borrar estos datos---?')" href="/turistas/delete/<%=data[i].id%>">Delete</a> 
+                        <a class="btn btn-success edit" href="/turistas/edit/<%=data.id%>">Edit</a>
+                        <a class="btn btn-danger delete" onclick="return alert('Estas Seguro de borrar estos datos---?')" href="/turistas/delete/<%=data.id%>">Delete</a> 
                     </td>
                 </tr>
-            <% } %>
+            <% }) %>
             </tbody>
         </table>
         <% } %>
@@ -74,3 +74,5 @@
     </div>
 </body>
 </html>
+
+                  
