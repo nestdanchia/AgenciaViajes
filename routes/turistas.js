@@ -184,7 +184,7 @@ router.get('/delete/(:id)', function(req, res, next) {
         if (err) {
             console.log("JSON.stringify(id)", JSON.stringify(id))
             // set flash message
-            req.flash('error', err.message)
+         req.flash('error','Debera anular antes la Reserva')
             // redirect to turista page
             res.redirect('/turistas')
         } else {
