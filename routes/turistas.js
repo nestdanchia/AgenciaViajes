@@ -174,22 +174,27 @@ router.post('/update/:id', function(req, res, next) {
 router.get('/delete/(:id)', function(req, res, next) {
     
 
-    const id = req.params.id;
-     
-    dbConn.query('DELETE FROM turista WHERE id = ' + id, function(err, result) {
+  var id = req.params.id;
+  console.log("id:",id)
+     console.log("JSON.stringify(id)", JSON.stringify(id))
+    dbConn.query(`
+	DELETE FROM turista WHERE id = "${id}"
+	`, function(err, result) {
         //if(err) throw err
         if (err) {
+            console.log("JSON.stringify(id)", JSON.stringify(id))
             // set flash message
-            req.flash('error', err)
+            req.flash('error', err.message)
             // redirect to turista page
             res.redirect('/turistas')
         } else {
             // set flash message
-            req.flash('success', 'turista Borrado! ID = ' + id)
+            req.flash('success', 'Sample Data Deleted');
             // redirect to turista page
             res.redirect('/turistas')
         }
     })
 })
+
 
 module.exports = router;
