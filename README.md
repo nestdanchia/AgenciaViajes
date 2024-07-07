@@ -1,22 +1,23 @@
-Le envie video ppor gmail 
+# Le envie video por gmail 
 
 Ejecutar 
-npm run dev 
+# npm run dev 
 
-Base  de DATOS 
-host : 'localhost',
-database : 'agencia_viajes',
-user : 'root',
-password : 'nestor01',
-port :3307 --> use este puerto
+# Base  de DATOS 
+# host : 'localhost',
+# database : 'agencia_viajes',
+# user : 'root',
+ ###### password : 'nestor01',
+
+###### port :3307 --> use este puerto
 
 
-esta en user _login
-Ver Pagina ---> http://localhost:3000/pagina
-ver panel de Logeo ---> link en nav Administrar
-usuario ---> ndchiariello@gmail.com   clave ---> nestor01 
+# esta en user_login  -- usuario ---> ndchiariello@gmail.com   clave ---> nestor01 
+# Ver Pagina ---> http://localhost:3000/pagina
+# ver panel de Logeo ---> link en nav Administrar
 
-accede a --->  http://localhost:3000/turistas
 
- En el proyecto ver PDF con DER tambien unas consultas y la creacion de agencia:viajes BD 
+###### accede a --->  http://localhost:3000/turistas
+
+###### En el proyecto ver PDF con DER tambien unas consultas y la creacion de agencia:viajes BD 
 
